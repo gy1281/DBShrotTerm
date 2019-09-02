@@ -1,0 +1,146 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+
+<!--package:要映射对象所在的包-->
+<hibernate-mapping package="com.guoyue.kitchenhelper.domain">
+
+    <!--
+        name:java类名
+        table: 数据库表名
+    -->
+    <class name="com.guoyue.kitchenhelper.domain.admin.AdminInfo" table="kitchen_helper.admin_info">
+        <meta attribute="admin class"></meta>
+        <!--
+            name: 实体类的数据域
+            type：数据域类型
+            column:数据库表中的列
+        -->
+        <id name="empId" type="int" column="emp_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="empName" column="emp_name" type="string"></property>
+        <property name="password" column="reg_password" type="string"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.admin.FoodBuy" table="kitchen_helper.food_buy">
+
+        <id name="foodBuyId" type="int" column="foodbuy_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="foodId" column="food_id" type="int"></property>
+        <property name="buyNumber" column="buy_number" type="int"></property>
+        <property name="buyState" column="buy_state" type="string"></property>
+    </class>
+    <class name="com.guoyue.kitchenhelper.domain.food.FoodType" table="kitchen_helper.type_info">
+        <id name="typeId" type="int" column="type_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="typeName" column="type_name" type="string"></property>
+        <property name="typeDesc" column="type_desc" type="string"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.food.FoodInfo" table="kitchen_helper.food_info">
+        <id name="foodId" type="int" column="food_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="foodName" column="food_name" type="string"></property>
+        <property name="foodPrice" column="food_price" type="float"></property>
+        <property name="foodNumber" column="food_number" type="int"></property>
+        <property name="foodDesc" column="food_desc" type="string"></property>
+        <property name="typeId" column="type_id" type="int"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.menu.MenuInfo" table="kitchen_helper.menu_info">
+        <id name="menuId" type="int" column="menu_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="menuName" column="menu_name" type="string"></property>
+        <property name="userName" column="user_name" type="string"></property>
+        <property name="menuDesc" column="menu_desc" type="string"></property>
+        <property name="comScore" column="com_score" type="float"></property>
+        <property name="collNumber" column="coll_number" type="int"></property>
+        <property name="browNumber" column="brow_number" type="int"></property>
+        <property name="menuState" column="menu_state" type="string"></property>
+        <property name="userId" column="user_id" type="int"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.menu.MenuFood" table="kitchen_helper.menu_food">
+        <id name="tableId" type="int" column="table_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="menuId" column="menu_id" type="int"></property>
+        <property name="foodId" column="food_id" type="int"></property>
+        <property name="foodNumber" column="food_number" type="int"></property>
+        <property name="unit" column="unit" type="string"></property>
+        <property name="foodName" column="food_name" type="string"></property>
+        <property name="foodPrice" column="food_price" type="float"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.menu.MenuEval" table="kitchen_helper.menu_eval">
+        <id name="tableId" type="int" column="table_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="menuId" column="menu_id" type="int"></property>
+        <property name="userId" column="user_id" type="int"></property>
+        <property name="evalCont" column="eval_cont" type="string"></property>
+        <property name="browFlag" column="brow_flag" type="int"></property>
+        <property name="collFlag" column="coll_flag" type="int"></property>
+        <property name="score" column="score" type="float"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.menu.MenuStep" table="kitchen_helper.menu_step">
+        <id name="tableId" type="int" column="table_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="menuId" column="menu_id" type="int"></property>
+        <property name="stepOrder" column="step_order" type="int"></property>
+        <property name="StepDesc" column="step_desc" type="string"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.user.BookformInfo" table="kitchen_helper.bookform_info">
+        <id name="tableId" type="int" column="table_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="bfId" column="bf_id" type="int"></property>
+        <property name="foodId" column="food_id" type="int"></property>
+        <property name="bfNumber" column="bf_number" type="int"></property>
+        <property name="price" column="price" type="float"></property>
+        <property name="discount" column="discount" type="float"></property>
+        <property name="foodName" column="food_name" type="string"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.user.FoodBookform" table="kitchen_helper.food_bookform">
+        <id name="bfId" type="int" column="bf_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="userId" column="user_id" type="int"></property>
+        <property name="delTime" column="del_time" type="date"></property>
+        <property name="desAddress" column="des_address" type="string"></property>
+        <property name="phoneNumber" column="phone_number" type="string"></property>
+        <property name="bookformState" column="bookform_state" type="string"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.user.UserInfo" table="kitchen_helper.user_info">
+        <id name="userId" type="int" column="user_id">
+            <generator class="sequence"></generator>
+        </id>
+        <property name="userName" column="user_name" type="string"></property>
+        <property name="sex" column="sex" type="string"></property>
+        <property name="password" column="password" type="string"></property>
+        <property name="phoneNumber" column="phone_number" type="string"></property>
+        <property name="email" column="email" type="string"></property>
+        <property name="city" column="city" type="string"></property>
+        <property name="regTime" column="reg_time" type="date"></property>
+    </class>
+
+    <class name="com.guoyue.kitchenhelper.domain.user.UserFood" table="kitchen_helper.user_food">
+        <composite-id>
+            <key-property name="userId" column="user_id" type="int"></key-property>
+            <key-property name="foodId" column="food_id" type="int"></key-property>
+        </composite-id>
+
+        <property name="foodName" column="food_name" type="string"></property>
+        <property name="foodNumber" column="food_number" type="int"></property>
+        <property name="foodPrice" column="food_price" type="float"></property>
+
+    </class>
+</hibernate-mapping>
